@@ -1,6 +1,6 @@
 # DressRecommendation
 
-##Creating an environment from an environment.yml file
+## Creating an environment from an environment.yml file
 Create the environment from the environment.yml file:
 ```
 conda env create -f environment.yml
@@ -14,14 +14,14 @@ Activate the new environment:
 conda list
 ```
 
-##Activating an environment
+## Activating an environment
 To activate an environment:
 
 Windows: activate myenv
 macOS and Linux: source activate myenv
 Conda prepends the path name myenv onto your system command.
 
-##Deactivating an environment
+## Deactivating an environment
 To deactivate an environment:
 
 Windows: deactivate
