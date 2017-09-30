@@ -30,6 +30,7 @@ class web_page(object):
         super(web_page, self).__init__()
         self.address = address
         self.html_doc = self.read_html_page
+        self.items = scraping(self.html_doc)
 
     @property
     def read_html_page(self):
@@ -69,8 +70,6 @@ class scraping(object):
 
 
 if __name__ == '__main__':
-    mod = web_page()
-    scr = scraping(mod.html_doc)
-
+    scr = web_page().items
     for s in scr.items:
         print(s.__dict__)
