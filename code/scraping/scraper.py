@@ -1,21 +1,32 @@
 from bs4 import BeautifulSoup
 import urllib.request
 
-#soup = BeautifulSoup(html_doc, 'html.parser')
+
+class Set(object):
+    """docstring for Set"""
+    def __init__(self, author=None, likes=None, items=None, url_set=None):
+        super(Set, self).__init__()
+        self.author = author
+        self.likes = likes
+        self.items = items
+        self.url_set = url_set
+
 
 class dress_item(object):
     """docstring fos"""
+
     def __init__(self, href=None, desc=None, price=None, fav_cnt=None):
         self.image_link = href
         self.description = desc
         self.price = price
         self.likes = fav_cnt
 
-    
+
 class web_page(object):
     """load the html file form a web page"""
 
-    def __init__(self, address="https://www.polyvore.com/arcane_work_outfit/set?id=188730024"):
+    def __init__(self, address=
+        "https://www.polyvore.com/arcane_work_outfit/set?id=188730024"):
         super(web_page, self).__init__()
         self.address = address
         self.html_doc = self.read_html_page
@@ -42,7 +53,8 @@ class scraping(object):
 
     @property
     def bottom_table(self):
-        return self.soup.find_all("div", class_="grid_item hover_container type_thing span1w span1h")
+        return self.soup.find_all("div", class_=
+            "grid_item hover_container type_thing span1w span1h")
 
     def allocate_items(self):
         items = []
@@ -56,19 +68,9 @@ class scraping(object):
 
 
 
-
 if __name__ == '__main__':
+    mod = web_page()
+    scr = scraping(mod.html_doc)
 
-    wp = web_page(address='https://www.polyvore.com/cgi/search.users')
-    user_list = BeautifulSoup(wp.html_doc, 'html.parser')
-    print(len(user_list.find_all("div", class_="rec_follow clearfix")))
-
-
-
-    # mod = web_page()
-    # scr = scraping(mod.html_doc)
-
-    # for s in scr.items:
-    #     print(s.__dict__)
-
-
+    for s in scr.items:
+        print(s.__dict__)
