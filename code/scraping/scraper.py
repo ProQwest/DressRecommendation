@@ -43,23 +43,32 @@ class scraping(object):
     @property
     def bottom_table(self):
         return self.soup.find_all("div", class_="grid_item hover_container type_thing span1w span1h")
-    
+
     def allocate_items(self):
         items = []
         for item in self.bottom_table:
             atr = {'href': item.find("img")['src'],
-                   'desc': item.find("img")['title'],            
+                   'desc': item.find("img")['title'],
                    'price': item.find("span", class_="price").text,
-                   'fav_cnt': item.find("span", class_="fav_count").text,
-            }
+                   'fav_cnt': item.find("span", class_="fav_count").text}
             items.append(dress_item(**atr))
         return items
-        
+
+
+
 
 if __name__ == '__main__':
-    mod = web_page()
-    scr = scraping(mod.html_doc)
 
-    for s in scr.items:
-        print(s.__dict__)
-        
+    wp = web_page(address='https://www.polyvore.com/cgi/search.users')
+    user_list = BeautifulSoup(wp.html_doc, 'html.parser')
+    print(len(user_list.find_all("div", class_="rec_follow clearfix")))
+
+
+
+    # mod = web_page()
+    # scr = scraping(mod.html_doc)
+
+    # for s in scr.items:
+    #     print(s.__dict__)
+
+
