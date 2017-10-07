@@ -56,9 +56,7 @@ class scrape_sets(object):
         for link in links:
             html = link.get_boxes()
             link_html = BeautifulSoup(link, 'html.parser')
-            print(link_html)
             box = link_html.find('div', class_="grid_item hover_container type_thing span1w span1h")
-            print(box)
             arg = {'dress_combo': box.findall('img')['title'],
                    'likes': box.find('span',class_='fav_count')
                    }
