@@ -12,7 +12,7 @@ class scrape_sets(object):
     def __init__(self, n_scroll=250, url=''):
         super(scrape_sets, self).__init__()
         self.url = url
-        self.driver = webdriver.Chrome('C:\\Users\\codispoti\\Downloads\\chromedriver.exe')
+        self.driver = webdriver.Chrome('./chromedriver')
         self.base_url = 'https://www.polyvore.com'
         self.users = []
         self.n_scroll = n_scroll
